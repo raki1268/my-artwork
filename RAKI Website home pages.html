@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/homepagestyle.css" />
+    
+    <title>LUO HUI</title>
+    <meta name="description" content="Raki's art work" />
+    <meta name="keywords" content="art;raki;photograph;japan" />
+    
+
+</head>
+  <body>
+    <table>
+        <tr>
+            <td style="padding-left: 80px;padding-top: 50px;">
+                <h1>LUO HUI</h1>
+            </td>
+            <td style="padding-left: 50px;padding-top: 50px;"> RAKI ラキ 🎨 📷 🐱</td>
+        </tr>
+    </table>
+   
+</head>
+<body>
+
+<ul class="navbar">
+    <table border="0">
+        <tr>
+            <td><a href="RAKI Website home pages.html"
+                style="background-color: rgba(157, 255, 29, 0.5); /* 半透明白色背景 */
+                color: black";
+                >Home</a></td>
+            <td><a href="hope every spring like that.html">Shoots</a> </td>
+            <td><a href="RAKIwebsitepaintpages.html">Paint</a></td>
+            <td><a href="RAKI website  about page.html">About</a></td>
+            <td><a href="RAKI website Contact pages.html">Contact</a></td>
+        </tr>
+        <tr>
+            <td colspan="5"><div class="blacklinenavcar"></div>
+                <div class="blacklinenavcar"></div></td>
+        </tr>
+    </table>
+</ul>
+
+    <div class="image-container">
+        <div class="image-container">
+            <img src="static/picture/shootpages/hesltfile/RKS29.jpg" alt="Image 1" class="active">
+            <img src="static/picture/shootpages/hesltfile/RKS32.jpg" alt="Image 2">
+            <img src="static/picture/shootpages/firstmeetfile/RKS145.jpg" alt="Image 3">
+            <img src="static/picture/shootpages/japantkohfile/RKS471.jpg" alt="Image 4">
+        </div>
+        
+        <div class="controls">
+            <div class="control-dot active" onclick="showImage(1)"></div>
+            <div class="control-dot" onclick="showImage(2)"></div> 
+            <div class="control-dot" onclick="showImage(3)"></div>
+            <div class="control-dot" onclick="showImage(4)"></div>
+        </div>
+    </div>
+
+    <script>
+        const imageContainer = document.querySelector('.image-container');
+        const controlDots = document.querySelectorAll('.control-dot');
+        let currentImage = 1; // 初始显示第一张图片
+
+        function showImage(index) {
+            currentImage = index;
+            updateImages();
+        }
+
+        function updateImages() {
+            document.querySelectorAll('.image-container img').forEach((img, index) => {
+                if (index + 1 === currentImage) {
+                    img.classList.add('active');
+                } else {
+                    img.classList.remove('active');
+                }
+            });
+
+            // 更新控制按钮的样式
+            controlDots.forEach((dot, index) => {
+                if (index + 1 === currentImage) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function rotateImages() {
+            currentImage = (currentImage % 3) + 1; // 循环轮播图片
+            updateImages();
+        }
+
+        setInterval(rotateImages, 7000); /* 每隔两秒调用一次rotateImages函数 */
+    </script>
+
+<div class="cities">
+    <p style="navbar">
+        &nbsp;</br>&nbsp;
+    <!--首页文字注释-->
+    </p>
+    </div>
+
+    <div id="footer">
+        <td><a href="RAKI website  about page.html" class="about-link">About</a> </td>
+        <div >
+            <td> <a href="https://www.instagram.com/luohui_i/"><img src="static/picture/home pages/inslogo.png" alt="Image ins"style="width: 0.5cm; height: 0.5cm;"></a></td>
+            
+        </div>
+        <hr> <!-- 在分隔线之前插入水平分隔线 -->
+        <p>©️ 2021-2024 LUOHUI. All rights reserved.</p>
+        <p>Unauthorized copying, reproduction, diversion, alteration, editing, processing, sale, public transmission, linking, etc. of any images or other materials on this website is strictly prohibited. Any and all works, photographs and texts on this website are protected by copyright of LUOHUI, unless otherwise specified.</p>
+       
+    </div>
+
+</body>
+</html>
+
+
+
