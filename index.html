@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Your Website</title>
+    <meta name="description" content="Raki's art work" />
+    <meta name="keywords" content="art；raki；photograph；japan" />
+    <style>
+        
+       .cities {
+            background-color:white;
+            color:rgb(147, 142, 147);
+            margin:10px;
+            padding:40px;
+            font-size: 0.7em;
+            margin-left: 500px;
+            text-align: right;
+        } 
+
+       /* 全局样式 */
+        body {
+            margin: 0;
+        }
+
+       /* 导航栏样式 */
+       .navbar {
+            font-size: 1em;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.); /* 透明背景 */
+            padding: 0px 0;
+            margin-top: 20px;
+            margin-left: 10px;
+            text-align: left;
+        }
+
+       /* 导航项样式 */
+       .navbar a {
+            text-decoration: none;
+            color: black;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+
+       /* 悬停时的导航项样式 */
+       .navbar a:hover {
+            background-color: rgba(157, 255, 29, 0.5); /* 半透明白色背景 */
+            color: black;
+        }
+
+        picture big body {
+            margin-left: 0; /* 重置 body 的默认边距 */
+}
+
+       picture body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+            overflow: hidden;
+            margin-left: 130px;
+        }
+
+        .image-container {
+            position: relative;
+            width: 800px; 
+            height: 500px;
+            margin-top: 10px;
+            margin-left: 80px;
+            padding: 10px;
+            overflow: hidden; /* 隐藏溢出部分 */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: none; /* 默认隐藏所有图片 */
+        }
+
+        .image-container img.active {
+            display: block; /* 显示当前活动图片 */
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            justify-content: center; 
+        }
+
+        .control-dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .control-dot.active {
+            background-color: rgba(220, 195, 195, 0.2);
+        }
+
+
+
+       body {
+            font-family: 'Arial', sans-serif;
+            position: relative;
+        }
+
+        #translation-buttons {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+
+        #footer {
+            background-color:rgba(0, 0, 0, 0.2);
+            color:white;
+            clear:both;
+            text-align:center;
+            padding:60px;	 	 
+        }
+
+
+    </style>
+
+
+
+
+
+
+</head>
+
+
+  <body>
+    <table>
+        <tr>
+            <td style="padding-left: 10px;">
+                <h1>RAKI</h1>
+            </td>
+            <td style="padding-left: 10px;">ラキ 🎨 📷 🐱</td>
+        </tr>
+    </table>
+ 
+    
+   
+</head>
+<body>
+
+    <!-- 翻译按钮 -->
+    <div id="translation-buttons">
+        <button onclick="translateTo('ja')">JP</button>
+        <button onclick="translateTo('en')">En</button>
+        <button onclick="translateTo('zh')">Cn</button>
+    </div>
+
+
+<ul class="directory-list navbar">
+    <table border="0">
+        <tr>
+            <td><a href="RAKI Website home pages.html">Home</a></td>
+            <td><a href="shoots.html">Shoots</a></td>
+            <td><a href="paint.html">Paint</a></td>
+            <td><a href="RAKI website  about page.html">About</a></td>
+            <td><a href="RAKI website Contact pages.html">Contact</a></td>
+        </tr>
+    </table>
+</ul>
+
+<hr/>
+
+
+    <div class="image-container">
+        <div class="image-container">
+            <img src="RAKI Website/IMG_0887.JPG" alt="Image 1" class="active">
+            <img src="RAKI Website/IMG_9390.JPG" alt="Image 2">
+            <img src="RAKI Website/IMG_1628.JPG" alt="Image 3">
+        </div>
+        
+        <div class="controls">
+            <div class="control-dot active" onclick="showImage(1)"></div>
+            <div class="control-dot" onclick="showImage(2)"></div>
+            <div class="control-dot" onclick="showImage(3)"></div>
+        </div>
+    </div>
+
+    <script>
+        const imageContainer = document.querySelector('.image-container');
+        const controlDots = document.querySelectorAll('.control-dot');
+        let currentImage = 1; // 初始显示第一张图片
+
+        function showImage(index) {
+            currentImage = index;
+            updateImages();
+        }
+
+        function updateImages() {
+            document.querySelectorAll('.image-container img').forEach((img, index) => {
+                if (index + 1 === currentImage) {
+                    img.classList.add('active');
+                } else {
+                    img.classList.remove('active');
+                }
+            });
+
+            // 更新控制按钮的样式
+            controlDots.forEach((dot, index) => {
+                if (index + 1 === currentImage) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function rotateImages() {
+            currentImage = (currentImage % 3) + 1; // 循环轮播图片
+            updateImages();
+        }
+
+        setInterval(rotateImages, 7000); /* 每隔两秒调用一次rotateImages函数 */
+    </script>
+
+
+
+<div class="cities">
+    <p style="navbar">
+     The most important thing in my life is</br>art music and LOVE
+    <!--首页文字注释-->
+    </p>
+    </div>
+
+
+      <div id="footer">
+      something end here
+      </div>
+
+      <script>
+        // JavaScript 用于处理翻译功能
+        function translateTo(language) {
+            // 在这里添加实际的翻译逻辑
+            alert('Translate to ' + language);
+            // 这里你可以调用翻译API或切换页面语言等操作
+        }
+     </script>
+
+
+</body>
+</html>
+
+
+
