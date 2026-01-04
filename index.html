@@ -2,197 +2,239 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LUO HUI | RAKI Portfolio</title>
-    <meta name="description" content="Raki's art work" />
-    <meta name="keywords" content="art；raki；photograph；japan" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUO HUI | RAKI - Welcome</title>
     <style>
-        .cities {
-            background-color:white;
-            color:rgb(147, 142, 147);
-            margin:10px;
-            padding:40px;
-            font-size: 0.7em;
-            margin-left: 500px;
-            text-align: right;
-        } 
-
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
             font-family: 'Arial', sans-serif;
-            position: relative;
         }
 
-        .navbar {
-            font-size: 1em;
-            font-weight: bold;
-            background-color: rgba(0, 0, 0, 0); 
-            padding: 0px 0;
-            margin-top: 20px;
-            margin-left: 10px;
-            text-align: left;
+        /* iframe 作为背景 */
+        #background-iframe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            z-index: 1;
         }
 
-        .navbar a {
-            text-decoration: none;
-            color: black;
-            padding: 10px 15px;
-            display: inline-block;
+        /* 毛玻璃遮罩层 */
+        #glass-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 2;
+            transition: opacity 0.8s ease, backdrop-filter 0.8s ease;
         }
 
-        .navbar a:hover {
-            background-color: rgba(157, 255, 29, 0.5); 
-            color: black;
+        /* 主要内容容器 */
+        #main-content {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease;
         }
 
+        /* 标题样式 */
+        h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 0.5rem;
+            color: #333;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+            animation: fadeInDown 1s ease;
+        }
+
+        /* 图片容器 */
         .image-container {
-            position: relative;
-            width: 800px; 
-            max-width: 95%;
-            height: 500px;
-            margin: 10px auto; /* 居中 */
-            padding: 10px;
-            overflow: hidden; 
+            width: 400px;
+            height: 400px;
+            margin-bottom: 3rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.2s ease 0.3s both;
         }
 
         .image-container img {
             width: 100%;
             height: 100%;
-            object-fit: contain; 
-            display: none; 
+            object-fit: cover;
+            display: block;
         }
 
-        .image-container img.active {
-            display: block; 
-        }
-
-        .controls {
-            position: absolute;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            justify-content: center; 
-        }
-
-        .control-dot {
-            width: 10px;
-            height: 10px;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 50%;
+        /* 按钮样式 */
+        #entrance-btn {
+            padding: 1.2rem 3rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.3rem;
+            color: #fff;
+            background: rgba(51, 51, 51, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
             cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            animation: fadeInUp 1s ease 0.6s both;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .control-dot.active {
-            background-color: rgba(0, 0, 0, 0.8);
+        #entrance-btn:hover {
+            background: rgba(51, 51, 51, 0.95);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
         }
 
-        #translation-buttons {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 100;
+        #entrance-btn:active {
+            transform: translateY(-1px);
         }
 
-        #footer {
-            background-color:rgba(0, 0, 0, 0.05);
-            color: grey;
-            clear:both;
-            text-align:center;
-            padding:60px;       
+        /* 淡出动画 */
+        .fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .blur-out {
+            backdrop-filter: blur(0px);
+            -webkit-backdrop-filter: blur(0px);
+            opacity: 0;
+        }
+
+        /* 入场动画 */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: 0.3rem;
+            }
+
+            .image-container {
+                width: 300px;
+                height: 300px;
+                margin-bottom: 2rem;
+            }
+
+            #entrance-btn {
+                padding: 1rem 2.5rem;
+                font-size: 1.2rem;
+                letter-spacing: 0.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 0.2rem;
+            }
+
+            .image-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            #entrance-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- 背景 iframe 显示 home.html -->
+    <iframe id="background-iframe" src="home.html"></iframe>
 
-    <div id="translation-buttons">
-        <button onclick="translateTo('ja')">JP</button>
-        <button onclick="translateTo('en')">En</button>
-        <button onclick="translateTo('zh')">Cn</button>
-    </div>
+    <!-- 毛玻璃遮罩层 -->
+    <div id="glass-overlay"></div>
 
-    <table>
-        <tr>
-            <td style="padding-left: 20px;">
-                <h1>RAKI</h1>
-            </td>
-            <td style="padding-left: 10px;">ラキ 🎨 📷 🐱</td>
-        </tr>
-    </table>
-
-    <ul class="directory-list navbar">
-        <table border="0">
-            <tr>
-                <td><a href="index.html">Home</a></td>
-                <td><a href="shoots.html">Shoots</a></td>
-                <td><a href="paint.html">Paint</a></td>
-                <td><a href="RAKI website about page.html">About</a></td>
-                <td><a href="RAKI website Contact pages.html">Contact</a></td>
-            </tr>
-        </table>
-    </ul>
-
-    <hr/>
-
-    <div class="image-container">
-        <img src="images/home_pages/facebooklogo.png" alt="Image 1" class="active" loading="lazy">
-        <img src="images/home_pages/homepage02.jpg" alt="Image 2" loading="lazy">
-        <img src="images/home_pages/homepage03.jpg" alt="Image 3" loading="lazy">
+    <!-- 主要内容 -->
+    <div id="main-content">
+        <h1>LUO HUI</h1>
         
-        <div class="controls">
-            <div class="control-dot active" onclick="showImage(1)"></div>
-            <div class="control-dot" onclick="showImage(2)"></div>
-            <div class="control-dot" onclick="showImage(3)"></div>
+        <div class="image-container">
+            <img src="images/paintpages/004.jpg" alt="LUO HUI Artwork">
         </div>
+
+        <button id="entrance-btn">ENTRANCE</button>
     </div>
 
     <script>
-        const controlDots = document.querySelectorAll('.control-dot');
-        let currentImage = 1; 
+        const entranceBtn = document.getElementById('entrance-btn');
+        const mainContent = document.getElementById('main-content');
+        const glassOverlay = document.getElementById('glass-overlay');
 
-        function showImage(index) {
-            currentImage = index;
-            updateImages();
-        }
+        entranceBtn.addEventListener('click', function() {
+            // 添加淡出效果
+            mainContent.classList.add('fade-out');
+            glassOverlay.classList.add('blur-out');
 
-        function updateImages() {
-            document.querySelectorAll('.image-container img').forEach((img, index) => {
-                if (index + 1 === currentImage) {
-                    img.classList.add('active');
-                } else {
-                    img.classList.remove('active');
-                }
-            });
+            // 等待动画完成后跳转
+            setTimeout(function() {
+                window.location.href = 'home.html';
+            }, 800);
+        });
 
-            controlDots.forEach((dot, index) => {
-                if (index + 1 === currentImage) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
-
-        function rotateImages() {
-            currentImage = (currentImage % 3) + 1; 
-            updateImages();
-        }
-
-        setInterval(rotateImages, 5000); 
-    </script>
-
-    <div class="cities">
-        <p>The most important thing in my life is<br>art music and LOVE</p>
-    </div>
-
-    <div id="footer">
-        © RAKI Portfolio - Something ends here
-    </div>
-
-    <script>
-        function translateTo(language) {
-            alert('Translate to ' + language + ' (Coming soon)');
-        }
+        // 防止 iframe 内容被点击
+        document.getElementById('background-iframe').style.pointerEvents = 'none';
     </script>
 </body>
 </html>
