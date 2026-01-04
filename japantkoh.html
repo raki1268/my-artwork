@@ -2,110 +2,227 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/homepagestyle.css" />
+    <link rel="stylesheet" href="css/style.css" />
     
-    <title>Your Website</title>
-    <meta name="description" content="Raki's art work" />
-    <meta name="keywords" content="art;raki;photograph;japan" />
-    
-
-</head>
-    <table>
-        <tr>
-            <td style="padding-left: 80px;padding-top: 50px;">
-                <h1>LUO HUI</h1>
-            </td>
-            <td style="padding-left: 50px;padding-top: 50px;"> RAKI ラキ 🎨 📷 🐱</td>
-        </tr>
-    </table>
+    <title>Japan TKOH | LUO HUI</title>
+    <meta name="description" content="Raki's art work - First Meet" />
+    <meta name="keywords" content="art;raki;photograph;vancouver;canada" />
 </head>
 
 <body>
+    <!-- 页面标题 -->
+    <table>
+        <tr>
+            <td style="padding-left: 80px; padding-top: 50px;">
+                <h1>LUO HUI</h1>
+            </td>
+            <td style="padding-left: 50px; padding-top: 50px;">RAKI ラキ 🎨 📷 🐱</td>
+        </tr>
+    </table>
+
+    <!-- 导航栏 -->
     <ul class="navbar">
         <table border="0">
             <tr>
-                <td><a href="RAKI Website home pages.html">Home</a></td>
-                <td><a href="hope every spring like that.html"
-                        style="background-color: rgba(157, 255, 29, 0.5); color: black;">Shoots</a></td>
-                <td><a href="RAKIwebsitepaintpages.html">Paint</a></td>
-                <td><a href="RAKI website  about page.html">About</a></td>
-                <td><a href="RAKI website Contact pages.html">Contact</a></td>
+                <td><a href="home.html">Home</a></td>
+                <td><a href="hope_every_spring_like_that.html" style="background-color: rgba(157, 255, 29, 0.5); color: black;">Shoots</a></td>
+                <td><a href="paint.html">Paint</a></td>
+                <td><a href="about.html">About</a></td>
+                <td><a href="contact.html">Contact</a></td>
             </tr>
             <tr>
-                <td colspan="5"><div class="blacklinenavcar"></div>
-                    <div class="blacklinenavcar"></div></td>
+                <td colspan="5">
+                    <div class="blacklinenavcar"></div>
+                    <div class="blacklinenavcar"></div>
+                </td>
             </tr>
         </table>
     </ul>
-   <div class="row">
-    <div class="column side">
-       <h4>&nbsp;&nbsp;🌳 Project&nbsp;&nbsp;585&nbsp;Pics</h4>
-       <hr/>
-       <ul>
-        <li><a href="hope every spring like that.html">hope every spring like that</a> </li>
-        <li><a href="firstmeet.html">First Meet</a></li>
-        <li><a href="tokyoilove.html">Tokyo i love</a></li>
-        <li><a href="japantkoh.html"style="background-color: rgba(160,320, 29, 60)";>Japan TKOH</a></li>
-        <li><a href="theplaceulive.html">The Place U Live</a></li>
-        <li><a href="moviestills.html">Movie Stills</a> </li>
-        <li><a href="portrait.html">portrait</a></li>
-        <li><a href="blackandwhite.html">B&W</a></li>
-        </ul>
-    </div>
 
+    <!-- 三栏布局 -->
+    <div class="row">
+        <!-- 左侧项目列表 -->
+        <div class="column side">
+            <h4>&nbsp;&nbsp;🌳 Project&nbsp;&nbsp;585&nbsp;Pics</h4>
+            <hr/>
+            <ul>
+                <li><a href="hope_every_spring_like_that.html">hope every spring like that</a></li>
+                <li><a href="firstmeet.html">First Meet</a></li>
+                <li><a href="tokyoilove.html">Tokyo i love</a></li>
+                <li><a href="japantkoh.html" style="background-color: rgba(157, 255, 29, 0.6);">Japan TKOH</a></li>
+                <li><a href="theplacelulive.html">The Place U Live</a></li>
+                <li><a href="moviestills.html">Movie Stills</a></li>
+                <li><a href="portrait.html">portrait</a></li>
+                <li><a href="bts.html">B&W</a></li>
+            </ul>
+        </div>
+
+        <!-- 中间画廊区域 -->
         <div class="column middle">
-            <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;131 Pics</h3>
+            <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="pic-count"></span> Pics</h3>
             <div class="blackline"></div>
-            
-            <!-- JavaScript 生成的 HTML 结构 -->
-<script>
-    // 创建循环，从 RKS204 到 RKS265
-    for (let i = 454; i <= 585; i++) {
-        // 构建图片路径
-        let imageName = `static/picture/shootpages/japantkohfile/RKS${i}.jpg`;
-        // 构建图片描述
-        let imageDesc = `RKS${i}<br>2019`;
 
-        // 生成 HTML 结构
-        document.write(`
-            <div class="gallery">
-                <a target="_blank" href="${imageName}"></a>
-                <img src="${imageName}" alt="Cinque Terre">
-                </a>
-                <div class="desc">${imageDesc}</div>
+            <!-- 图片画廊容器 - 由 JavaScript 动态生成 -->
+            <div id="gallery-container"></div>
+        </div>
+
+        <!-- 右侧项目介绍 -->
+        <div class="column right">
+            <br><br><br><br><br><br><br>
+            <h4>Japan TKOH</h4>
+            <p>This is a photo series I took in Japan in 2018-2019.
+            </p>
+            <p> TKOH is a summary of Tokyo, Kyoto, Osaka, and Hokkaido. Looking back at these photos still brings back many wonderful memories.
+            </p>
+            <p>最後に、ありがとうございました。</p>
+        </div>
+    </div>
+
+    <!-- 灯箱 -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightboxOnBackground(event)">
+        <button class="lightbox-close" onclick="closeLightbox()"></button>
+        <button class="lightbox-nav prev" onclick="changeImage(-1); event.stopPropagation();"></button>
+        <button class="lightbox-nav next" onclick="changeImage(1); event.stopPropagation();"></button>
+        
+        <div class="lightbox-content" onclick="event.stopPropagation();">
+            <img id="lightbox-img" class="lightbox-image" src="" alt="">
+            <div class="lightbox-info">
+                <div class="lightbox-title" id="lightbox-title"></div>
+                <div class="lightbox-counter" id="lightbox-counter"></div>
             </div>
-        `);
-    }
-</script>
+        </div>
     </div>
-  </div>
 
-   <div class="column right">
-    <br> <!-- 这里创建了一个空行 -->
-    <br> <!-- 这里创建了一个空行 -->
-    <br> <!-- 这里创建了一个空行 -->
-    <br> <!-- 这里创建了一个空行 -->
-    <br> <!-- 这里创建了一个空行 -->
-    <br> <!-- 这里创建了一个空行 -->
-    <br> <!-- 这里创建了一个空行 -->
-    <h4>Japan TKOH</h4>
-    <br> <!-- 这里创建了一个空行 -->
-    <p>This is one of the movies I worked on, where I was responsible for shooting stills and BTS.</p>
+    <!-- 页脚 -->
+    <div id="footer">
+        <a href="about.html" class="about-link">About</a>
         
-</div>
-
-
-<div id="footer">
-    <td><a href="RAKI website  about page.html" class="about-link">About</a> </td>
-    <div >
-        <td> <a href="https://www.instagram.com/luohui_i/"><img src="static/picture/home pages/inslogo.png" alt="Image ins"style="width: 0.5cm; height: 0.5cm;"></a></td>
+        <div style="margin-top: 10px;">
+            <a href="https://www.instagram.com/luohui_i/" target="_blank" rel="noopener noreferrer">
+                <img src="images/home_pages/instagram.png" alt="Instagram" style="width: 1.0cm; height: 1.0cm;">
+            </a>
+            <a href="https://www.behance.net/luohui2" target="_blank" rel="noopener noreferrer">
+                <img src="images/home_pages/behance.png" alt="Behance" style="width: 1.0cm; height: 1.0cm;">
+            </a>
+            <a href="https://www.youtube.com/@raki_luohui" target="_blank" rel="noopener noreferrer">
+                <img src="images/home_pages/youtube.png" alt="YouTube" style="width: 1.0cm; height: 1.0cm;">
+            </a>
+        </div>
         
+        <hr>
+        
+        <p>©️ 2026 LUOHUI. All rights reserved.</p>
+        <p>Unauthorized copying, reproduction, diversion, alteration, editing, processing, sale, public transmission, linking, etc. of any images or other materials on this website is strictly prohibited. Any and all works, photographs and texts on this website are protected by copyright of LUOHUI, unless otherwise specified.</p>
     </div>
-    <hr> <!-- 在分隔线之前插入水平分隔线 -->
-    <p>©️ 2021-2024 LUOHUI. All rights reserved.</p>
-    <p>Unauthorized copying, reproduction, diversion, alteration, editing, processing, sale, public transmission, linking, etc. of any images or other materials on this website is strictly prohibited. Any and all works, photographs and texts on this website are protected by copyright of LUOHUI, unless otherwise specified.</p>
-   
-</div>
 
+    <!-- JavaScript：动态生成图片和灯箱功能 -->
+    <script>
+        // 配置参数 - 超级简洁！
+        const config = {
+            basePath: 'images/shootpages/japantkohfile/',
+            startId: 454,
+            endId: 585,
+            year: '2018-2019'
+        };
+
+        // 自动生成连续 ID 的图片数组
+        const images = [];
+        for (let id = config.startId; id <= config.endId; id++) {
+            images.push({
+                src: `${config.basePath}RKS${id}.jpg`,
+                title: `RKS${id} - ${config.year}`
+            });
+        }
+
+        // 动态生成画廊
+        function generateGallery() {
+            const container = document.getElementById('gallery-container');
+            const picCount = document.getElementById('pic-count');
+            
+            // 更新图片数量
+            picCount.textContent = images.length;
+            
+            // 生成每个图片框
+            images.forEach((img, index) => {
+                const gallery = document.createElement('div');
+                gallery.className = 'gallery';
+                gallery.onclick = () => openLightbox(index);
+                
+                const image = document.createElement('img');
+                image.src = img.src;
+                image.alt = `RKS${config.startId + index}`;
+                
+                const desc = document.createElement('div');
+                desc.className = 'desc';
+                desc.innerHTML = `RKS${config.startId + index}<br>${config.year}`;
+                
+                gallery.appendChild(image);
+                gallery.appendChild(desc);
+                container.appendChild(gallery);
+            });
+        }
+
+        // 灯箱功能
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightbox();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeLightboxOnBackground(event) {
+            if (event.target.id === 'lightbox') {
+                closeLightbox();
+            }
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            } else if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            
+            updateLightbox();
+        }
+
+        function updateLightbox() {
+            const img = document.getElementById('lightbox-img');
+            const title = document.getElementById('lightbox-title');
+            const counter = document.getElementById('lightbox-counter');
+            
+            img.src = images[currentIndex].src;
+            title.textContent = images[currentIndex].title;
+            counter.textContent = `${currentIndex + 1} / ${images.length}`;
+        }
+
+        // 键盘事件
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeImage(1);
+                } else if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
+        });
+
+        // 页面加载时生成画廊
+        window.addEventListener('DOMContentLoaded', generateGallery);
+    </script>
 </body>
 </html>
