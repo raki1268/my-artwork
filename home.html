@@ -2,47 +2,115 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/homepagestyle.css" />
-    
-    <title>LUO HUI</title>
+    <title>LUO HUI | RAKI</title>
     <meta name="description" content="Raki's art work" />
     <meta name="keywords" content="art;raki;photograph;japan" />
     
+    <style>
+        /* 优化图片容器尺寸 - 覆盖外部CSS */
+        .image-container {
+            display: flex;
+            position: relative;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            height: 600px;
+            margin: 30px auto 0;
+            padding: 10px;
+            overflow: hidden;
+        }
 
-</head>
-  <body>
-    <table>
-        <tr>
-            <td style="padding-left: 80px;padding-top: 50px;">
-                <h1>LUO HUI</h1>
-            </td>
-            <td style="padding-left: 50px;padding-top: 50px;"> RAKI ラキ 🎨 📷 🐱</td>
-        </tr>
-    </table>
-   
+        /* 修复控制点样式 - 添加缺失的 .control-dot */
+        .control-dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .control-dot:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+            transform: scale(1.2);
+        }
+
+        .control-dot.active {
+            background-color: rgba(0, 0, 0, 0.7);
+            transform: scale(1.3);
+        }
+
+        /* 确保图片正确显示 */
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .image-container img.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* 响应式优化 */
+        @media screen and (max-width: 1200px) {
+            .image-container {
+                height: 500px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .image-container {
+                height: 400px;
+                margin: 20px 10px 0;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .image-container {
+                height: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<ul class="navbar">
-    <table border="0">
+    <!-- 页面标题 -->
+    <table>
         <tr>
-            <td><a href="RAKI Website home pages.html"
-                style="background-color: rgba(157, 255, 29, 0.5); /* 半透明白色背景 */
-                color: black";
-                >Home</a></td>
-            <td><a href="hope every spring like that.html">Shoots</a> </td>
-            <td><a href="RAKIwebsitepaintpages.html">Paint</a></td>
-            <td><a href="RAKI website  about page.html">About</a></td>
-            <td><a href="RAKI website Contact pages.html">Contact</a></td>
-        </tr>
-        <tr>
-            <td colspan="5"><div class="blacklinenavcar"></div>
-                <div class="blacklinenavcar"></div></td>
+            <td style="padding-left: 80px; padding-top: 50px;">
+                <h1>LUO HUI</h1>
+            </td>
+            <td style="padding-left: 50px; padding-top: 50px;">RAKI ラキ 🎨 📷 🐱</td>
         </tr>
     </table>
-</ul>
 
-     <div class="image-container">
+    <!-- 导航栏 -->
+    <ul class="navbar">
+        <table border="0">
+            <tr>
+                <td>
+                    <a href="home.html" style="background-color: rgba(157, 255, 29, 0.5); color: black;">Home</a>
+                </td>
+                <td><a href="hope_every_spring_like_that.html">Shoots</a></td>
+                <td><a href="paint.html">Paint</a></td>
+                <td><a href="about.html">About</a></td>
+                <td><a href="contact.html">Contact</a></td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <div class="blacklinenavcar"></div>
+                    <div class="blacklinenavcar"></div>
+                </td>
+            </tr>
+        </table>
+    </ul>
+
+    <!-- 图片轮播区域 -->
+    <div class="image-container">
         <img src="images/home_pages/homepage01.jpg" alt="Image 1" class="active" loading="lazy">
         <img src="images/home_pages/homepage02.jpg" alt="Image 2" loading="lazy">
         <img src="images/home_pages/homepage03.jpg" alt="Image 3" loading="lazy">
@@ -54,10 +122,11 @@
         </div>
     </div>
 
+    <!-- 轮播图控制脚本 -->
     <script>
         const imageContainer = document.querySelector('.image-container');
         const controlDots = document.querySelectorAll('.control-dot');
-        let currentImage = 1; // 初始显示第一张图片
+        let currentImage = 1;
 
         function showImage(index) {
             currentImage = index;
@@ -73,7 +142,6 @@
                 }
             });
 
-            // 更新控制按钮的样式
             controlDots.forEach((dot, index) => {
                 if (index + 1 === currentImage) {
                     dot.classList.add('active');
@@ -84,34 +152,33 @@
         }
 
         function rotateImages() {
-            currentImage = (currentImage % 3) + 1; // 循环轮播图片
+            currentImage = (currentImage % 3) + 1;
             updateImages();
         }
 
-        setInterval(rotateImages, 7000); /* 每隔两秒调用一次rotateImages函数 */
+        setInterval(rotateImages, 7000);
     </script>
 
-<div class="cities">
-    <p style="navbar">
-        &nbsp;</br>&nbsp;
-    <!--首页文字注释-->
-    </p>
+    <!-- 占位内容区域 -->
+    <div class="cities">
+        <p style="margin: 0;">&nbsp;<br>&nbsp;</p>
     </div>
 
+    <!-- 页脚 -->
     <div id="footer">
-        <td><a href="RAKI website  about page.html" class="about-link">About</a> </td>
-        <div >
-            <td> <a href="https://www.instagram.com/luohui_i/"><img src="static/picture/home pages/inslogo.png" alt="Image ins"style="width: 0.5cm; height: 0.5cm;"></a></td>
-            
+        <a href="about.html" class="about-link">About</a>
+        
+        <div style="margin-top: 10px;">
+            <a href="https://www.instagram.com/luohui_i/" target="_blank" rel="noopener noreferrer">
+                <img src="static/picture/home pages/inslogo.png" alt="Instagram" style="width: 0.5cm; height: 0.5cm;">
+            </a>
         </div>
-        <hr> <!-- 在分隔线之前插入水平分隔线 -->
+        
+        <hr>
+        
         <p>©️ 2021-2024 LUOHUI. All rights reserved.</p>
         <p>Unauthorized copying, reproduction, diversion, alteration, editing, processing, sale, public transmission, linking, etc. of any images or other materials on this website is strictly prohibited. Any and all works, photographs and texts on this website are protected by copyright of LUOHUI, unless otherwise specified.</p>
-       
     </div>
 
 </body>
 </html>
-
-
-
