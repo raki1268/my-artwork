@@ -47,11 +47,9 @@
         .image-container {
             position: relative;
             width: 800px; 
-            max-width: 95%; /* 适配小屏幕 */
+            max-width: 95%;
             height: 500px;
-            margin-top: 10px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 10px auto; /* 居中 */
             padding: 10px;
             overflow: hidden; 
         }
@@ -59,7 +57,7 @@
         .image-container img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* 改为 contain 确保画作不被裁剪 */
+            object-fit: contain; 
             display: none; 
         }
 
@@ -137,9 +135,9 @@
     <hr/>
 
     <div class="image-container">
-        <img src="images/IMG_0887.jpg" alt="Image 1" class="active" loading="lazy">
-        <img src="images/IMG_9390.jpg" alt="Image 2" loading="lazy">
-        <img src="images/IMG_1628.jpg" alt="Image 3" loading="lazy">
+        <img src="images/home pages/IMG_0887.jpg" alt="Image 1" class="active" loading="lazy">
+        <img src="images/home pages/IMG_9390.jpg" alt="Image 2" loading="lazy">
+        <img src="images/home pages/IMG_1628.jpg" alt="Image 3" loading="lazy">
         
         <div class="controls">
             <div class="control-dot active" onclick="showImage(1)"></div>
@@ -180,13 +178,11 @@
             updateImages();
         }
 
-        setInterval(rotateImages, 5000); // 5秒切换一次
+        setInterval(rotateImages, 5000); 
     </script>
 
     <div class="cities">
-        <p>
-            The most important thing in my life is<br>art music and LOVE
-        </p>
+        <p>The most important thing in my life is<br>art music and LOVE</p>
     </div>
 
     <div id="footer">
@@ -195,9 +191,8 @@
 
     <script>
         function translateTo(language) {
-            alert('Translate to ' + language + ' (This feature is under development)');
+            alert('Translate to ' + language + ' (Coming soon)');
         }
     </script>
-
 </body>
 </html>
