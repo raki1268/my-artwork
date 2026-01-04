@@ -342,9 +342,9 @@ div.desc {
 
 /* Footer 样式 */
 #footer {
-    background-color: rgb(255, 218, 241);
+    background-color: rgb(208, 208, 208);
     font-size: small;
-    color: rgb(1, 65, 23);
+    color: rgb(39, 39, 39);
     clear: both;
     text-align: left;
     padding: 60px;
