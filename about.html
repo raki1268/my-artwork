@@ -2,98 +2,363 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/homepagestyle.css" />
     
-    <title>Your Website</title>
-    <meta name="description" content="Raki's art work" />
-    <meta name="keywords" content="art;raki;photograph;japan" />
+    <title>About | LUO HUI</title>
+    <meta name="description" content="About Raki - Visual Artist and Photographer" />
+    <meta name="keywords" content="art;raki;photographer;artist;luohui" />
     
+    <style>
+        /* 个人照片悬停效果 */
+        .profile-photo {
+            width: 400px;
+            height: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
 
+        .profile-photo:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            filter: brightness(1.05);
+        }
+
+        /* Instagram 精选区域 - 低调处理 */
+        .instagram-section {
+            background: transparent;
+            padding: 40px 0;
+            margin-top: 60px;
+            text-align: left;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .instagram-section h2 {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 8px;
+            font-family: "Anek Devanagari", Arial, sans-serif;
+            font-weight: normal;
+            font-style: italic;
+            letter-spacing: normal;
+        }
+
+        .instagram-subtitle {
+            font-size: 0.75em;
+            color: #aaa;
+            margin-bottom: 25px;
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            max-width: 100%;
+            margin: 0 0 20px 0;
+        }
+
+        .instagram-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            border: 1px solid #e8e8e8;
+        }
+
+        .instagram-item:hover {
+            opacity: 0.8;
+        }
+
+        .instagram-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .instagram-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .instagram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .instagram-item:hover .instagram-overlay {
+            opacity: 1;
+        }
+
+        .instagram-icon {
+            width: 24px;
+            height: 24px;
+            opacity: 0.6;
+        }
+
+        .instagram-button {
+            display: inline-block;
+            padding: 8px 20px;
+            background: transparent;
+            color: #666;
+            text-decoration: none;
+            border: 1px solid #d0d0d0;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: normal;
+            transition: all 0.3s ease;
+        }
+
+        .instagram-button:hover {
+            border-color: #999;
+            color: #333;
+        }
+
+        /* 联系提示区域 */
+        .contact-prompt {
+            background: #f9f9f9;
+            padding: 30px;
+            margin-top: 60px;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .contact-prompt p {
+            font-size: 1.1em;
+            color: #666;
+            margin: 0;
+        }
+
+        .contact-prompt a {
+            color: #333;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-prompt a:hover {
+            color: #9dff1d;
+        }
+
+        /* 响应式 */
+        @media screen and (max-width: 768px) {
+            .profile-photo {
+                width: 100%;
+                height: auto;
+            }
+
+            @media screen and (max-width: 768px) {
+                .instagram-grid {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+
+            @media screen and (max-width: 480px) {
+                .instagram-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+        }
+    </style>
 </head>
-  <body>
+
+<body>
+    <!-- 页面标题 -->
     <table>
         <tr>
-            <td style="padding-left: 80px;padding-top: 50px;">
+            <td style="padding-left: 80px; padding-top: 50px;">
                 <h1>LUO HUI</h1>
             </td>
-            <td style="padding-left: 50px;padding-top: 50px;"> RAKI ラキ 🎨 📷 🐱</td>
+            <td style="padding-left: 50px; padding-top: 50px;">RAKI ラキ 🎨 📷 🐱</td>
         </tr>
     </table>
-   
-</head>
-<body>
 
-<ul class="navbar">
-    <table border="0">
-        <tr>
-            <td><a href="RAKI Website home pages.html" >Home</a></td>
-            <td><a href="hope every spring like that.html">Shoots</a> </td>
-            <td><a href="RAKIwebsitepaintpages.html">Paint</a></td>
-            <td><a href="RAKI website  about page.html"style="background-color: rgba(157, 255, 29, 0.5); /* 半透明白色背景 */
-                color: black";>About</a></td>
-            <td><a href="RAKI website Contact pages.html">Contact</a></td>
-        </tr>
-        <tr>
-            <td colspan="5"><div class="blacklinenavcar"></div>
-                <div class="blacklinenavcar"></div></td>
-        </tr>
-    </table>
-</ul>
+    <!-- 导航栏 -->
+    <ul class="navbar">
+        <table border="0">
+            <tr>
+                <td><a href="home.html">Home</a></td>
+                <td><a href="hope_every_spring_like_that.html">Shoots</a></td>
+                <td><a href="paint.html">Paint</a></td>
+                <td><a href="about.html" style="background-color: rgba(157, 255, 29, 0.5); color: black;">About</a></td>
+                <td><a href="contact.html">Contact</a></td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <div class="blacklinenavcar"></div>
+                    <div class="blacklinenavcar"></div>
+                </td>
+            </tr>
+        </table>
+    </ul>
 
+    <!-- 主要内容 -->
+    <main>
+        <!-- 标题 -->
+        <div>
+            <p style="font-size: 30px; color: black;">LUO HUI</p>
+        </div>
+        <br><br>
 
-
-<main>  
-    <div>
-    <p style="font-size:30px;color:black;">LUO HUI</p>
-    </div> 
-    </br>
-    </br>
-
-    <div>
-        <img src="static/picture/aboutpages/luohui.jpg" alt="Cinque Terre"
-        style="width:400px;height:300px;" >
-        <p style="font-size: 12px;color:rgb(208, 208, 208);">©️ luohui</p>
-        </div> 
-        
-     
-    <div>
-    <p class="italic">Resume</p>
-    <p class="light">1995&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Born in Guangdong, China</br>
-        2013-2021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lived, studied, and worked in Guangzhou, Guangdong</br>
-        As of 2024&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Currently, lives and works in Canada and Japan.</br>
-        <p class="italic">Education</p>
-        <p class="light"> 2019&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BFA,SCAU Design major China</br>
-        
-        <p class="italic">Selected Publications</p>
-        <p class="light">
-            2019&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;「 The Place you live 」selfpublish</br>
-            2024&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;「 Tokyo i love 」MatsugaPress. 50copies</br>
-        <p class="italic">Selected Exhibition</p>
-        <p class="light">
-            nana</br>
-        <p class="italic">Awards and Grants</p>
-        <p class="light">
-            nana</br>
+        <!-- 个人照片 -->
+        <div>
+            <img src="images/aboutpages/luohui.JPG" alt="LUO HUI Portrait" class="profile-photo">
+            <p style="font-size: 12px; color: rgb(208, 208, 208);">©️ luohui</p>
         </div>
 
+        <!-- 艺术家简介 -->
+        <div style="margin-top: 40px;">
+            <p class="italic">Artist Statement</p>
+            <p class="light">
+                I am a visual artist and photographer based in Canada and Japan. My work explores the delicate moments of everyday life, capturing the quiet beauty found in urban landscapes, seasonal transitions, and intimate human connections. Through photography and painting, I seek to preserve fleeting emotions and celebrate the simple joys that make life meaningful. My artistic practice is rooted in observation, authenticity, and a deep appreciation for the world around me.
+            </p>
+        </div>
 
-</main>
+        <!-- 履历 -->
+        <div>
+            <p class="italic">Resume</p>
+            <p class="light">
+                1995&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Born in Guangdong, China<br>
+                2013-2021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lived, studied, and worked in Guangzhou, Guangdong<br>
+                As of 2024&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Currently, lives and works in Canada and Japan.
+            </p>
 
+            <p class="italic">Education</p>
+            <p class="light">
+                2019&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BFA, SCAU Design major China
+            </p>
 
-<div id="footer">
-    <td><a href="RAKI website  about page.html" class="about-link">About</a> </td>
-    <div >
-        <td> <a href="https://www.instagram.com/luohui_i/"><img src="static/picture/home pages/inslogo.png" alt="Image ins"style="width: 0.5cm; height: 0.5cm;"></a></td>
+            <p class="italic">Selected Publications</p>
+            <p class="light">
+                2019&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;「 The Place you live 」selfpublish<br>
+                2024&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;「 Tokyo i love 」MatsugaPress. 50copies
+            </p>
+
+            <p class="italic">Selected Exhibition</p>
+            <p class="light">Coming soon</p>
+
+            <p class="italic">Awards and Grants</p>
+            <p class="light">Coming soon</p>
+        </div>
+
+        <!-- Instagram 精选区域 -->
+        <div class="instagram-section">
+            <h2>Instagram</h2>
+            <p class="instagram-subtitle">Recent moments</p>
+
+            <div class="instagram-grid" id="instagram-grid">
+                <!-- 图片由 JavaScript 生成 -->
+            </div>
+
+            <a href="https://www.instagram.com/luohui_i/" target="_blank" rel="noopener noreferrer" class="instagram-button">
+                @luohui_i
+            </a>
+        </div>
+
+        <!-- 联系提示 -->
+        <div class="contact-prompt">
+            <p>For collaborations and inquiries, please visit the <a href="contact.html">Contact page</a></p>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <div id="footer">
+        <a href="about.html" class="about-link">About</a>
         
+        <div style="margin-top: 10px;">
+            <a href="https://www.instagram.com/luohui_i/" target="_blank" rel="noopener noreferrer">
+                <img src="images/home_pages/instagram.png" alt="Instagram" style="width: 1.0cm; height: 1.0cm;">
+            </a>
+            <a href="https://www.behance.net/luohui2" target="_blank" rel="noopener noreferrer">
+                <img src="images/home_pages/behance.png" alt="Behance" style="width: 1.0cm; height: 1.0cm;">
+            </a>
+            <a href="https://www.youtube.com/@raki_luohui" target="_blank" rel="noopener noreferrer">
+                <img src="images/home_pages/youtube.png" alt="YouTube" style="width: 1.0cm; height: 1.0cm;">
+            </a>
+        </div>
+        
+        <hr>
+        
+        <p>©️ 2021-2024 LUOHUI. All rights reserved.</p>
+        <p>Unauthorized copying, reproduction, diversion, alteration, editing, processing, sale, public transmission, linking, etc. of any images or other materials on this website is strictly prohibited. Any and all works, photographs and texts on this website are protected by copyright of LUOHUI, unless otherwise specified.</p>
     </div>
-    <hr> <!-- 在分隔线之前插入水平分隔线 -->
-    <p>©️ 2021-2024 LUOHUI. All rights reserved.</p>
-    <p>Unauthorized copying, reproduction, diversion, alteration, editing, processing, sale, public transmission, linking, etc. of any images or other materials on this website is strictly prohibited. Any and all works, photographs and texts on this website are protected by copyright of LUOHUI, unless otherwise specified.</p>
-   
-</div>
 
+    <!-- JavaScript：Instagram 精选图片 -->
+    <script>
+        // Instagram 精选图片配置
+        // 🔄 更新方法：只需替换下面的图片URL和Instagram帖子链接即可
+        const instagramPosts = [
+            {
+                image: 'images/aboutpages/ig1.jpg',  // 替换为你的图片路径
+                link: 'https://www.instagram.com/p/YOUR_POST_ID_1/'  // 替换为对应的Instagram帖子链接
+            },
+            {
+                image: 'images/aboutpages/ig2.jpg',
+                link: 'https://www.instagram.com/p/YOUR_POST_ID_2/'
+            },
+            {
+                image: 'images/aboutpages/ig3.jpg',
+                link: 'https://www.instagram.com/p/YOUR_POST_ID_3/'
+            },
+            {
+                image: 'images/aboutpages/ig4.jpg',
+                link: 'https://www.instagram.com/p/YOUR_POST_ID_4/'
+            },
+            {
+                image: 'images/aboutpages/ig5.jpg',
+                link: 'https://www.instagram.com/p/YOUR_POST_ID_5/'
+            },
+            {
+                image: 'images/aboutpages/ig6.jpg',
+                link: 'https://www.instagram.com/p/YOUR_POST_ID_6/'
+            }
+        ];
+
+        // 生成 Instagram 网格
+        function generateInstagramGrid() {
+            const container = document.getElementById('instagram-grid');
+            
+            instagramPosts.forEach(post => {
+                const item = document.createElement('a');
+                item.className = 'instagram-item';
+                item.href = post.link;
+                item.target = '_blank';
+                item.rel = 'noopener noreferrer';
+                
+                const img = document.createElement('img');
+                img.src = post.image;
+                img.alt = 'Instagram Post';
+                
+                const overlay = document.createElement('div');
+                overlay.className = 'instagram-overlay';
+                
+                const icon = document.createElement('img');
+                icon.src = 'images/home_pages/instagram.png';
+                icon.alt = 'Instagram';
+                icon.className = 'instagram-icon';
+                
+                overlay.appendChild(icon);
+                item.appendChild(img);
+                item.appendChild(overlay);
+                container.appendChild(item);
+            });
+        }
+
+        // 页面加载时生成网格
+        window.addEventListener('DOMContentLoaded', generateInstagramGrid);
+    </script>
 </body>
 </html>
-
-
-
