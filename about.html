@@ -10,6 +10,15 @@
     <meta name="keywords" content="art;raki;photographer;artist;luohui" />
     
     <style>
+        /* 取消 main 的边框和阴影，拉宽页面 */
+        main {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0;
+            background-color: transparent;
+            box-shadow: none;
+        }
+
         /* 个人照片悬停效果 */
         .profile-photo {
             width: 400px;
@@ -207,9 +216,9 @@
 
     <!-- 主要内容 -->
     <main>
-        <!-- 标题 -->
+        <!-- 标题 - 改变颜色 -->
         <div>
-            <p style="font-size: 30px; color: black;">LUO HUI</p>
+            <p style="font-size: 30px; color: #888;">LUO HUI</p>
         </div>
         <br><br>
 
@@ -254,13 +263,21 @@
             <p class="light">Coming soon</p>
         </div>
 
-        <!-- Instagram 精选区域 -->
+        <!-- Instagram 精选区域 - SnapWidget -->
         <div class="instagram-section">
             <h2>Instagram</h2>
             <p class="instagram-subtitle">Recent moments</p>
 
-            <div class="instagram-grid" id="instagram-grid">
-                <!-- 图片由 JavaScript 生成 -->
+            <!-- SnapWidget -->
+            <div style="text-align: center; margin: 20px 0;">
+                <iframe src="https://snapwidget.com/embed/1115564" 
+                        class="snapwidget-widget" 
+                        allowtransparency="true" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        style="border:none; overflow:hidden; width:100%; max-width:765px; height:510px;" 
+                        title="Posts from Instagram">
+                </iframe>
             </div>
 
             <a href="https://www.instagram.com/luohui_i/" target="_blank" rel="noopener noreferrer" class="instagram-button">
@@ -296,69 +313,9 @@
         <p>Unauthorized copying, reproduction, diversion, alteration, editing, processing, sale, public transmission, linking, etc. of any images or other materials on this website is strictly prohibited. Any and all works, photographs and texts on this website are protected by copyright of LUOHUI, unless otherwise specified.</p>
     </div>
 
-    <!-- JavaScript：Instagram 精选图片 -->
+    <!-- JavaScript：不再需要，因为使用 SnapWidget -->
     <script>
-        // Instagram 精选图片配置
-        // 🔄 更新方法：只需替换下面的图片URL和Instagram帖子链接即可
-        const instagramPosts = [
-            {
-                image: 'images/aboutpages/ig1.jpg',  // 替换为你的图片路径
-                link: 'https://www.instagram.com/p/YOUR_POST_ID_1/'  // 替换为对应的Instagram帖子链接
-            },
-            {
-                image: 'images/aboutpages/ig2.jpg',
-                link: 'https://www.instagram.com/p/YOUR_POST_ID_2/'
-            },
-            {
-                image: 'images/aboutpages/ig3.jpg',
-                link: 'https://www.instagram.com/p/YOUR_POST_ID_3/'
-            },
-            {
-                image: 'images/aboutpages/ig4.jpg',
-                link: 'https://www.instagram.com/p/YOUR_POST_ID_4/'
-            },
-            {
-                image: 'images/aboutpages/ig5.jpg',
-                link: 'https://www.instagram.com/p/YOUR_POST_ID_5/'
-            },
-            {
-                image: 'images/aboutpages/ig6.jpg',
-                link: 'https://www.instagram.com/p/YOUR_POST_ID_6/'
-            }
-        ];
-
-        // 生成 Instagram 网格
-        function generateInstagramGrid() {
-            const container = document.getElementById('instagram-grid');
-            
-            instagramPosts.forEach(post => {
-                const item = document.createElement('a');
-                item.className = 'instagram-item';
-                item.href = post.link;
-                item.target = '_blank';
-                item.rel = 'noopener noreferrer';
-                
-                const img = document.createElement('img');
-                img.src = post.image;
-                img.alt = 'Instagram Post';
-                
-                const overlay = document.createElement('div');
-                overlay.className = 'instagram-overlay';
-                
-                const icon = document.createElement('img');
-                icon.src = 'images/home_pages/instagram.png';
-                icon.alt = 'Instagram';
-                icon.className = 'instagram-icon';
-                
-                overlay.appendChild(icon);
-                item.appendChild(img);
-                item.appendChild(overlay);
-                container.appendChild(item);
-            });
-        }
-
-        // 页面加载时生成网格
-        window.addEventListener('DOMContentLoaded', generateInstagramGrid);
+        // SnapWidget 已经自动处理 Instagram 内容显示
     </script>
 </body>
 </html>
