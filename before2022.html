@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/homepagestyle.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <title>Paint | LUO HUI</title>
+    <meta name="description" content="Raki's art work - Paintings 2022-2024" />
+    <meta name="keywords" content="art;raki;painting;oil pastel;acrylic" />
+</head>
+
+<body>
+    <!-- 页面标题 -->
+    <table>
+        <tr>
+            <td style="padding-left: 80px; padding-top: 50px;">
+                <h1>LUO HUI</h1>
+            </td>
+            <td style="padding-left: 50px; padding-top: 50px;">RAKI ラキ 🎨 📷 🐱</td>
+        </tr>
+    </table>
+
+    <!-- 导航栏 -->
+    <ul class="navbar">
+        <table border="0">
+            <tr>
+                <td><a href="home.html">Home</a></td>
+                <td><a href="hope_every_spring_like_that.html">Shoots</a></td>
+                <td><a href="paint.html" style="background-color: rgba(157, 255, 29, 0.5); color: black;">Paint</a></td>
+                <td><a href="about.html">About</a></td>
+                <td><a href="contact.html">Contact</a></td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <div class="blacklinenavcar"></div>
+                    <div class="blacklinenavcar"></div>
+                </td>
+            </tr>
+        </table>
+    </ul>
+
+    <!-- 三栏布局 -->
+    <div class="row">
+        <!-- 左侧项目列表 -->
+        <div class="column side">
+            <h4>「 Love Life Peace 」</h4>
+            <hr/>
+            <h4>「 <span id="pic-count"></span> Pics 」</h4>
+            <hr/>
+            <ul>
+                <li><a href="paint.html">2022-2024</a></li>
+                <li><a href="before2022.html" style="background-color: rgba(157, 255, 29, 0.6);">before 2022</a></li>
+            </ul>
+        </div>
+
+        <!-- 中间画廊区域 -->
+        <div class="column middle">
+            <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="pic-count-2"></span> Pics</h3>
+            <div class="blackline"></div>
+
+            <!-- 图片画廊容器 - 由 JavaScript 动态生成 -->
+            <div id="gallery-container"></div>
+        </div>
+
+        <!-- 右侧项目介绍 -->
+        <div class="column right">
+            <br><br><br><br><br><br><br>
+            <h4>Before 2022</h4>
+            <p>Paintings in China, Japan, and Canada.</p>
+            <p>A selection of works created during my art studies at school.</p>
+            <p>These include figure and landscape sketches, still life and plaster drawings, landscape paintings, and still life and figure color works.</p>
+            <p>Most were created in Hangzhou.</p>
+        </div>
+    </div>
+
+    <!-- 灯箱 -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightboxOnBackground(event)">
+        <button class="lightbox-close" onclick="closeLightbox()"></button>
+        <button class="lightbox-nav prev" onclick="changeImage(-1); event.stopPropagation();"></button>
+        <button class="lightbox-nav next" onclick="changeImage(1); event.stopPropagation();"></button>
+        
+        <div class="lightbox-content" onclick="event.stopPropagation();">
+            <img id="lightbox-img" class="lightbox-image" src="" alt="">
+            <div class="lightbox-info">
+                <div class="lightbox-title" id="lightbox-title"></div>
+                <div class="lightbox-counter" id="lightbox-counter"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div id="footer">
+        <a href="about.html" class="about-link">About</a>
+        
+        <div style="margin-top: 10px;">
+            <a href="https://www.instagram.com/luohui_i/" target="_blank" rel="noopener noreferrer">
+                <img src="images/home_pages/instagram.png" alt="Instagram" style="width: 1.0cm; height: 1.0cm;">
+            </a>
+            <a href="https://www.behance.net/luohui2" target="_blank" rel="noopener noreferrer">
+                <img src="images/home_pages/behance.png" alt="Behance" style="width: 1.0cm; height: 1.0cm;">
+            </a>
+            <a href="https://www.youtube.com/@raki_luohui" target="_blank" rel="noopener noreferrer">
+                <img src="images/home_pages/youtube.png" alt="YouTube" style="width: 1.0cm; height: 1.0cm;">
+            </a>
+        </div>
+        
+        <hr>
+        
+        <p>©️ 2026 LUOHUI. All rights reserved.</p>
+        <p>Unauthorized copying, reproduction, diversion, alteration, editing, processing, sale, public transmission, linking, etc. of any images or other materials on this website is strictly prohibited. Any and all works, photographs and texts on this website are protected by copyright of LUOHUI, unless otherwise specified.</p>
+    </div>
+
+    <!-- JavaScript：动态生成图片和灯箱功能 -->
+    <script>
+        // 绘画作品数据 - 每个作品都有独特的描述和年份
+        const paintingData = [
+           
+        ];
+
+        const basePath = 'images/paintpages/';
+
+        // 生成完整的图片数组
+        const images = paintingData.map(item => {
+            const idStr = String(item.id).padStart(3, '0'); // 001, 002, 003...
+            return {
+                src: `${basePath}${idStr}.jpg`,
+                title: `RKL${item.id} - ${item.title} - ${item.year}`,
+                id: item.id,
+                desc: item.title,
+                year: item.year
+            };
+        });
+
+        // 动态生成画廊
+        function generateGallery() {
+            const container = document.getElementById('gallery-container');
+            const picCount = document.getElementById('pic-count');
+            const picCount2 = document.getElementById('pic-count-2');
+            
+            // 更新图片数量
+            picCount.textContent = images.length;
+            picCount2.textContent = images.length;
+            
+            // 生成每个图片框
+            images.forEach((img, index) => {
+                const gallery = document.createElement('div');
+                gallery.className = 'gallery';
+                gallery.onclick = () => openLightbox(index);
+                
+                const image = document.createElement('img');
+                image.src = img.src;
+                image.alt = `RKL${img.id}`;
+                
+                const desc = document.createElement('div');
+                desc.className = 'desc';
+                desc.innerHTML = `RKL${img.id}<br>${img.desc}<br>${img.year}`;
+                
+                gallery.appendChild(image);
+                gallery.appendChild(desc);
+                container.appendChild(gallery);
+            });
+        }
+
+        // 灯箱功能
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightbox();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeLightboxOnBackground(event) {
+            if (event.target.id === 'lightbox') {
+                closeLightbox();
+            }
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            } else if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            
+            updateLightbox();
+        }
+
+        function updateLightbox() {
+            const img = document.getElementById('lightbox-img');
+            const title = document.getElementById('lightbox-title');
+            const counter = document.getElementById('lightbox-counter');
+            
+            img.src = images[currentIndex].src;
+            title.textContent = images[currentIndex].title;
+            counter.textContent = `${currentIndex + 1} / ${images.length}`;
+        }
+
+        // 键盘事件
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeImage(1);
+                } else if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
+        });
+
+        // 页面加载时生成画廊
+        window.addEventListener('DOMContentLoaded', generateGallery);
+    </script>
+</body>
+</html>
