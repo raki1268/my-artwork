@@ -2,101 +2,408 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/homepagestyle.css" />
     
-    <title>Your Website</title>
-    <meta name="description" content="Raki's art work" />
-    <meta name="keywords" content="art;raki;photograph;japan" />
+    <title>Contact | LUO HUI</title>
+    <meta name="description" content="Get in touch with Raki - Visual Artist and Photographer" />
+    <meta name="keywords" content="contact;art;raki;photographer;collaboration" />
     
+    <style>
+        /* 主容器布局 */
+        .contact-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 40px;
+        }
 
+        /* 标题样式 */
+        .contact-title {
+            text-align: center;
+            font-size: 3em;
+            color: #9b59b6;
+            margin-bottom: 50px;
+            font-family: "Anek Devanagari", Arial, sans-serif;
+            font-weight: 300;
+        }
+
+        /* 两栏布局 */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        /* 左侧表单区域 */
+        .form-section {
+            padding: 20px;
+        }
+
+        /* 表单样式 */
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 1em;
+            font-weight: normal;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 3px solid #4a90e2;
+            border-radius: 4px;
+            font-size: 1em;
+            font-family: Arial, sans-serif;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #357abd;
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background-color: #4a90e2;
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            float: right;
+        }
+
+        .contact-form button:hover {
+            background-color: #357abd;
+        }
+
+        /* 右侧图片区域 */
+        .image-section {
+            padding: 20px;
+        }
+
+        .contact-artwork {
+            width: 100%;
+            max-width: 540px;
+            margin: 0 auto;
+            display: block;
+            border: 15px solid #ff6b35;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-artwork:hover {
+            transform: scale(1.02);
+        }
+
+        .contact-artwork img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 3px solid #ffd93d;
+        }
+
+        /* 社交媒体区域 */
+        .social-section {
+            margin-top: 80px;
+            padding: 40px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .social-section h3 {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #333;
+            transform: translateY(-3px);
+        }
+
+        .social-link img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover img {
+            transform: scale(1.1);
+        }
+
+        .social-link span {
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        /* Email 区域 */
+        .email-section {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        .email-link {
+            font-size: 1.1em;
+            color: #4a90e2;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #4a90e2;
+            border-radius: 4px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .email-link:hover {
+            background-color: #4a90e2;
+            color: white;
+        }
+
+        /* 成功消息 */
+        .success-message {
+            display: none;
+            background: #d4edda;
+            border: 2px solid #c3e6cb;
+            color: #155724;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* 响应式设计 */
+        @media screen and (max-width: 968px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-title {
+                font-size: 2.5em;
+            }
+
+            .image-section {
+                order: -1;
+            }
+
+            .contact-artwork {
+                max-width: 400px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .contact-container {
+                padding: 0 20px;
+            }
+
+            .contact-title {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+
+            .social-links {
+                gap: 20px;
+            }
+
+            .social-link img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .contact-form button {
+                width: 100%;
+                float: none;
+            }
+        }
+    </style>
 </head>
-  <body>
+
+<body>
+    <!-- 页面标题 -->
     <table>
         <tr>
-            <td style="padding-left: 80px;padding-top: 50px;">
+            <td style="padding-left: 80px; padding-top: 50px;">
                 <h1>LUO HUI</h1>
             </td>
-            <td style="padding-left: 50px;padding-top: 50px;"> RAKI ラキ 🎨 📷 🐱</td>
+            <td style="padding-left: 50px; padding-top: 50px;">RAKI ラキ 🎨 📷 🐱</td>
         </tr>
     </table>
-   
-</head>
-<body>
 
-<ul class="navbar">
-    <table border="0">
-        <tr>
-            <td><a href="RAKI Website home pages.html" >Home</a></td>
-            <td><a href="hope every spring like that.html">Shoots</a> </td>
-            <td><a href="RAKIwebsitepaintpages.html">Paint</a></td>
-            <td><a href="RAKI website  about page.html">About</a></td>
-            <td><a href="RAKI website Contact pages.html"style="background-color: rgba(157, 255, 29, 0.5); /* 半透明白色背景 */
-                color: black";>Contact</a></td>
-        </tr>
-        <tr>
-            <td colspan="5"><div class="blacklinenavcar"></div>
-                <div class="blacklinenavcar"></div></td>
-        </tr>
-    </table>
-</ul>
-
-<main>
-    <p class="thicker">&nbsp;</p>
-    <p class="italic">&nbsp;&nbsp;&nbsp;&nbsp;📮: rakiartoffice@gmail.com</br>
-                     
-    </p>
-    
-    <ul>
-        <li><a href="https://twitter.com/HuileSELO"target="_blank">Twitter</a></li>
-        <li><a href="https://www.instagram.com/luohui_i/"target="_blank">Instagram</a></li>
-        <li><a href="https://www.facebook.com/profile.php?id=100082883096299"target="_blank">Facebook</a></li>
+    <!-- 导航栏 -->
+    <ul class="navbar">
+        <table border="0">
+            <tr>
+                <td><a href="home.html">Home</a></td>
+                <td><a href="hope_every_spring_like_that.html">Shoots</a></td>
+                <td><a href="paint.html">Paint</a></td>
+                <td><a href="about.html">About</a></td>
+                <td><a href="contact.html" style="background-color: rgba(157, 255, 29, 0.5); color: black;">Contact</a></td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <div class="blacklinenavcar"></div>
+                    <div class="blacklinenavcar"></div>
+                </td>
+            </tr>
+        </table>
     </ul>
-<div><!-- 空行 -->
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</div>
 
-</main>
+    <!-- 主要内容 -->
+    <div class="contact-container">
+        <!-- 标题 -->
+        <h2 class="contact-title">Say Hello! ✨</h2>
 
-<div id="footer">
-    <td><a href="RAKI website  about page.html" class="about-link">About</a> </td>
-    <div >
-        <td> <a href="https://www.instagram.com/luohui_i/"><img src="static/picture/home pages/inslogo.png" alt="Image ins"style="width: 0.5cm; height: 0.5cm;"></a></td>
-        
+        <!-- 两栏布局 -->
+        <div class="contact-content">
+            <!-- 左侧：联系表单 -->
+            <div class="form-section">
+                <!-- 成功消息 -->
+                <div class="success-message" id="success-message">
+                    <strong>Thank you! I'll get back to you soon!</strong>
+                </div>
+
+                <!-- Formspree 表单 -->
+                <form class="contact-form" action="https://formspree.io/f/mykzaovl" method="POST" id="contact-form">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject">
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+
+            <!-- 右侧：艺术图片 -->
+            <div class="image-section">
+                <div class="contact-artwork">
+                    <img src="images/contactpages/contact-art.jpg" alt="Artwork">
+                </div>
+            </div>
+        </div>
+
+        <!-- 社交媒体区域 -->
+        <div class="social-section">
+            <h3>Or find me on social media</h3>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/luohui_i/" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <img src="images/home_pages/instagram.png" alt="Instagram">
+                    <span>Instagram</span>
+                </a>
+
+                <a href="https://www.behance.net/luohui2" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <img src="images/home_pages/behance.png" alt="Behance">
+                    <span>Behance</span>
+                </a>
+
+                <a href="https://www.youtube.com/@raki_luohui" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <img src="images/home_pages/youtube.png" alt="YouTube">
+                    <span>YouTube</span>
+                </a>
+
+                <a href="https://twitter.com/HuileSELO" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <img src="images/home_pages/twitter.png" alt="Twitter">
+                    <span>Twitter</span>
+                </a>
+
+                <a href="https://www.facebook.com/profile.php?id=100082883096299" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <img src="images/home_pages/facebook.png" alt="Facebook">
+                    <span>Facebook</span>
+                </a>
+            </div>
+
+            <!-- Email 链接 -->
+            <div class="email-section">
+                <a href="mailto:rakiartoffice@gmail.com" class="email-link">📧 rakiartoffice@gmail.com</a>
+            </div>
+        </div>
     </div>
-    <hr> <!-- 在分隔线之前插入水平分隔线 -->
-    <p>©️ 2021-2024 LUOHUI. All rights reserved.</p>
-    <p>Unauthorized copying, reproduction, diversion, alteration, editing, processing, sale, public transmission, linking, etc. of any images or other materials on this website is strictly prohibited. Any and all works, photographs and texts on this website are protected by copyright of LUOHUI, unless otherwise specified.</p>
-   
-</div>
 
+    <!-- 页脚 -->
+    <div id="footer">
+        <a href="about.html" class="about-link">About</a>
+        
+        <div style="margin-top: 10px;">
+            <a href="https://www.instagram.com/luohui_i/" target="_blank" rel="noopener noreferrer">
+                <img src="images/home_pages/instagram.png" alt="Instagram" style="width: 1.0cm; height: 1.0cm;">
+            </a>
+            <a href="https://www.behance.net/luohui2" target="_blank" rel="noopener noreferrer">
+                <img src="images/home_pages/behance.png" alt="Behance" style="width: 1.0cm; height: 1.0cm;">
+            </a>
+            <a href="https://www.youtube.com/@raki_luohui" target="_blank" rel="noopener noreferrer">
+                <img src="images/home_pages/youtube.png" alt="YouTube" style="width: 1.0cm; height: 1.0cm;">
+            </a>
+        </div>
+        
+        <hr>
+        
+        <p>©️ 2021-2024 LUOHUI. All rights reserved.</p>
+        <p>Unauthorized copying, reproduction, diversion, alteration, editing, processing, sale, public transmission, linking, etc. of any images or other materials on this website is strictly prohibited. Any and all works, photographs and texts on this website are protected by copyright of LUOHUI, unless otherwise specified.</p>
+    </div>
+
+    <!-- JavaScript：表单提交处理 -->
+    <script>
+        const form = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+
+        form.addEventListener('submit', function(e) {
+            // Formspree 会处理提交，这里只是显示成功消息
+            setTimeout(function() {
+                successMessage.classList.add('show');
+                form.reset();
+                
+                // 5秒后自动隐藏成功消息
+                setTimeout(function() {
+                    successMessage.classList.remove('show');
+                }, 5000);
+            }, 500);
+        });
+    </script>
 </body>
 </html>
-
-
-
