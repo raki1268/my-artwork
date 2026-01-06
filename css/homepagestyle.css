@@ -119,7 +119,7 @@ body > table:first-of-type {
 }
 
 .navbar table {
-    width: auto;
+    width: 10px;
 }
 
 /* 横线单独处理，左右留出与导航栏相同的边距 */
