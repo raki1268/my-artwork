@@ -17,7 +17,7 @@ body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     position: relative;
-    overflow-x: hidden; /* 防止横向滚动 */
+    overflow-x: hidden;
 }
 
 /* ============================================
@@ -28,7 +28,7 @@ body {
 main {
     max-width: 1000px;
     margin: 30px auto;
-    padding: 30px;
+    padding: 30px 20px;
     background-color: transparent;
     box-shadow: none;
 }
@@ -38,7 +38,7 @@ main {
     background-color: white;
     color: rgb(147, 142, 147);
     margin: 10px auto;
-    padding: 40px;
+    padding: 40px 20px;
     font-size: 0.7em;
     text-align: right;
     max-width: 1000px;
@@ -74,6 +74,18 @@ p.thicker {
 }
 
 /* ============================================
+   页面标题区域
+   ============================================ */
+
+/* 标题容器居中对齐 */
+body > table:first-of-type {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ============================================
    分隔线
    ============================================ */
 
@@ -85,12 +97,12 @@ p.thicker {
 
 .blacklinenavcar {
     border-bottom: 2px solid black;
-    width: 100%; /* 修复：改为100%，完全响应式 */
+    width: 100%;
     max-width: 100%;
 }
 
 /* ============================================
-   导航栏
+   导航栏 - 居中对齐
    ============================================ */
 
 .navbar {
@@ -99,11 +111,15 @@ p.thicker {
     letter-spacing: 0.001em;
     font-family: "Anek Devanagari", Arial, sans-serif;
     background-color: rgba(0, 0, 0, 0);
-    padding: 15px 0;
-    margin-top: 30px;
-    margin-left: 58px;
+    padding: 15px 20px;
+    margin: 30px auto 0;
     text-align: left;
     list-style-type: none;
+    max-width: 1400px;
+}
+
+.navbar table {
+    width: 100%;
 }
 
 .navbar a {
@@ -200,30 +216,31 @@ li.dropdown {
    三栏布局
    ============================================ */
 
-.column {
-    float: left;
-    padding-left: 20px;
-    padding-top: 30px;
-    padding-right: 60px;
-    padding-bottom: 20px;
+/* 行容器 */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* 左侧栏 - 添加固定效果 */
+.column {
+    padding: 20px;
+}
+
+/* 左侧栏 - 固定效果 */
 .column.side {
-    width: 15%;
-    max-width: 200px;
+    width: 200px;
+    flex-shrink: 0;
     background-color: #befa8d;
     color: black;
     font-size: 15px;
     letter-spacing: 1px;
-    margin-top: 0;
-    margin-left: 60px;
     text-align: left;
     font-family: "Anek Devanagari", Arial, sans-serif;
     font-style: italic;
     font-weight: bold;
-    
-    /* 新增：固定定位 */
     position: sticky;
     top: 20px;
     align-self: flex-start;
@@ -237,12 +254,10 @@ li.dropdown {
 
 /* 中间栏 */
 .column.middle {
-    width: 60%;
-    max-width: calc(220px * 3 + 30px * 2 + 50px);
+    flex: 1;
+    min-width: 0;
     font-family: "Anek Devanagari", Courier, monospace;
     color: rgb(45, 45, 45);
-    padding-top: 0;
-    padding-right: 0;
     background-color: #ffffff;
     margin-bottom: 80px;
 }
@@ -250,18 +265,56 @@ li.dropdown {
 /* 右侧栏 */
 .column.right {
     width: 260px;
-    max-width: 250px;
+    flex-shrink: 0;
     background-color: rgba(255, 255, 255, 0.26);
     color: black;
     font-size: 12px;
     letter-spacing: 2px;
-    margin-top: 0;
-    margin-left: 20px;
-    margin-right: 60px;
-    padding: 10px;
     text-align: left;
     font-family: "Anek Devanagari", Arial, sans-serif;
     word-wrap: break-word;
+}
+
+/* ============================================
+   移动端侧边栏菜单按钮
+   ============================================ */
+
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    background: #befa8d;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: black;
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+.mobile-sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.mobile-sidebar-overlay.active {
+    display: block;
 }
 
 /* ============================================
@@ -386,29 +439,35 @@ div.desc {
 }
 
 /* ============================================
-   Footer 样式
+   Footer 样式 - 淡灰色配色
    ============================================ */
 
 #footer {
-    background-color: rgb(85, 85, 85);
+    background-color: #f5f5f5;
     font-size: small;
-    color: rgb(184, 184, 184);
+    color: #666;
     clear: both;
     text-align: left;
-    padding: 60px;
-    width: 100%; /* 确保全宽 */
+    padding: 60px 20px;
+    width: 100%;
     box-sizing: border-box;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+#footer p {
+    color: #666;
 }
 
 .about-link {
-    color: rgb(169, 169, 169);
+    color: #888;
     text-decoration: none;
     float: right;
     transition: color 0.3s ease;
 }
 
 .about-link:hover {
-    color: rgb(220, 220, 220);
+    color: #333;
 }
 
 /* ============================================
@@ -432,21 +491,38 @@ div.desc {
 @media screen and (max-width: 900px) {
     .navbar {
         font-size: 1.5em;
-        margin-left: 30px;
+        padding: 15px 20px;
     }
 
     main {
-        margin: 30px 20px;
         padding: 20px;
-    }
-
-    .column.side {
-        margin-left: 20px;
     }
 }
 
-/* 平板 */
+/* 平板和手机 - 显示汉堡菜单 */
 @media screen and (max-width: 768px) {
+    /* 显示汉堡菜单按钮 */
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    /* 侧边栏在移动端的样式 */
+    .column.side {
+        position: fixed;
+        left: -250px;
+        top: 0;
+        width: 250px;
+        height: 100%;
+        z-index: 1000;
+        transition: left 0.3s ease;
+        max-height: 100vh;
+        padding-top: 80px;
+    }
+
+    .column.side.mobile-active {
+        left: 0;
+    }
+
     .image-container {
         height: 400px;
         margin: 20px 10px 0;
@@ -454,19 +530,16 @@ div.desc {
 
     .navbar {
         font-size: 1.3em;
-        margin-left: 20px;
+        padding: 15px 20px;
     }
 
-    /* 隐藏侧边栏（固定效果在小屏幕上不适用） */
-    .column.side {
-        display: none;
-        position: static;
+    .row {
+        padding: 0 20px;
     }
 
     .column.middle {
         width: 100%;
         padding: 10px;
-        max-width: 100%;
     }
 
     .column.right {
@@ -474,12 +547,12 @@ div.desc {
     }
 
     .cities {
-        margin-left: 10px;
-        margin-right: 10px;
+        margin: 10px 20px;
+        padding: 20px;
     }
 
     main {
-        margin: 20px 10px;
+        margin: 20px;
         padding: 20px;
     }
 
@@ -487,9 +560,13 @@ div.desc {
         padding: 30px 20px;
     }
 
-    /* 调整标题区域的 padding */
-    table td {
+    body > table:first-of-type {
+        padding: 0 20px;
+    }
+
+    body > table:first-of-type td {
         padding-left: 20px !important;
+        padding-top: 30px !important;
     }
 }
 
@@ -497,11 +574,12 @@ div.desc {
 @media screen and (max-width: 480px) {
     .image-container {
         height: 300px;
+        margin: 20px 10px 0;
     }
 
     .navbar {
         font-size: 1.1em;
-        margin-left: 10px;
+        padding: 15px 10px;
     }
 
     .navbar a {
@@ -526,21 +604,32 @@ div.desc {
     }
 
     .cities {
-        padding: 20px;
+        padding: 20px 10px;
         margin: 10px;
     }
 
     #footer {
-        padding: 20px 15px;
+        padding: 20px 10px;
     }
 
-    /* 进一步调整标题 */
-    table td {
+    body > table:first-of-type {
+        padding: 0 10px;
+    }
+
+    body > table:first-of-type td {
         padding-left: 10px !important;
         padding-top: 20px !important;
     }
 
-    table td h1 {
+    body > table:first-of-type td h1 {
         font-size: 1.5em;
+    }
+
+    .row {
+        padding: 0 10px;
+    }
+
+    .column.middle {
+        padding: 10px 0;
     }
 }
