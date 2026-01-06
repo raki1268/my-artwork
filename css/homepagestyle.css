@@ -1,3 +1,7 @@
+/* ============================================
+   全局样式
+   ============================================ */
+
 /* 全局重置 */
 * {
     box-sizing: border-box;
@@ -8,34 +12,42 @@
     display: none;
 }
 
-/* 城市信息区域 */
-.cities {
-    background-color: white;
-    color: rgb(147, 142, 147);
-    margin: 10px;
-    padding: 40px;
-    font-size: 0.7em;
-    margin-left: 500px;
-    text-align: right;
-}
-
 /* 全局 body 样式 */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     position: relative;
+    overflow-x: hidden; /* 防止横向滚动 */
 }
 
-/* 主内容区域 */
+/* ============================================
+   主内容区域
+   ============================================ */
+
+/* 主内容区域 - 响应式优化 */
 main {
-    max-width: 600px;
-    margin: 30px 360px;
+    max-width: 1000px;
+    margin: 30px auto;
     padding: 30px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 修复：添加了透明度值 */
+    background-color: transparent;
+    box-shadow: none;
 }
 
-/* 段落样式 */
+/* 城市信息区域 */
+.cities {
+    background-color: white;
+    color: rgb(147, 142, 147);
+    margin: 10px auto;
+    padding: 40px;
+    font-size: 0.7em;
+    text-align: right;
+    max-width: 1000px;
+}
+
+/* ============================================
+   段落和文本样式
+   ============================================ */
+
 p {
     margin-bottom: 15px;
     color: #a9a4a4;
@@ -45,7 +57,7 @@ p.light {
     font-weight: lighter;
     letter-spacing: 0.01em;
     line-height: 2.0;
-    font-size: 16px; /* 修复：改为具体数值 */
+    font-size: 16px;
     color: #b9b9b9;
 }
 
@@ -61,18 +73,26 @@ p.thicker {
     color: #6c6666;
 }
 
-/* 黑色分隔线 */
+/* ============================================
+   分隔线
+   ============================================ */
+
 .blackline {
     border-bottom: 2px solid black;
     width: 95%;
+    max-width: 100%;
 }
 
 .blacklinenavcar {
     border-bottom: 2px solid black;
-    width: 100%;
+    width: 100%; /* 修复：改为100%，完全响应式 */
+    max-width: 100%;
 }
 
-/* 导航栏样式 */
+/* ============================================
+   导航栏
+   ============================================ */
+
 .navbar {
     font-size: 1.8em;
     font-weight: 500;
@@ -86,7 +106,6 @@ p.thicker {
     list-style-type: none;
 }
 
-/* 导航链接样式 */
 .navbar a {
     text-decoration: none;
     color: black;
@@ -95,13 +114,15 @@ p.thicker {
     transition: background-color 0.3s ease;
 }
 
-/* 导航链接悬停效果 */
 .navbar a:hover {
     background-color: rgba(157, 255, 29, 0.5);
     color: black;
 }
 
-/* 列表样式 */
+/* ============================================
+   列表样式
+   ============================================ */
+
 ul {
     list-style-type: none;
     padding: 0;
@@ -134,7 +155,10 @@ li a:hover {
     background-color: rgba(157, 255, 29, 0.5);
 }
 
-/* 下拉菜单相关 */
+/* ============================================
+   下拉菜单
+   ============================================ */
+
 li.dropdown {
     display: inline-block;
 }
@@ -172,7 +196,10 @@ li.dropdown {
     display: block;
 }
 
-/* 三栏布局 */
+/* ============================================
+   三栏布局
+   ============================================ */
+
 .column {
     float: left;
     padding-left: 20px;
@@ -181,7 +208,7 @@ li.dropdown {
     padding-bottom: 20px;
 }
 
-/* 左侧栏 */
+/* 左侧栏 - 添加固定效果 */
 .column.side {
     width: 15%;
     max-width: 200px;
@@ -195,6 +222,13 @@ li.dropdown {
     font-family: "Anek Devanagari", Arial, sans-serif;
     font-style: italic;
     font-weight: bold;
+    
+    /* 新增：固定定位 */
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
 }
 
 .column.side a {
@@ -230,7 +264,10 @@ li.dropdown {
     word-wrap: break-word;
 }
 
-/* 图片容器 - 优化为响应式 */
+/* ============================================
+   图片容器（首页轮播）
+   ============================================ */
+
 .image-container {
     display: flex;
     position: relative;
@@ -259,12 +296,15 @@ li.dropdown {
 /* Footer 图片容器 */
 .image-container-footer {
     display: flex;
-    width: 0.001cm;
-    height: 0.01cm;
+    width: 1px;
+    height: 1px;
     margin-right: 10px;
 }
 
-/* 轮播控制点 - 修复类名 */
+/* ============================================
+   轮播控制点
+   ============================================ */
+
 .control-dot {
     width: 12px;
     height: 12px;
@@ -284,7 +324,6 @@ li.dropdown {
     transform: scale(1.3);
 }
 
-/* 控制按钮容器 */
 .controls {
     position: absolute;
     bottom: 20px;
@@ -296,7 +335,10 @@ li.dropdown {
     z-index: 10;
 }
 
-/* 画廊样式 */
+/* ============================================
+   画廊样式
+   ============================================ */
+
 div.gallery {
     width: 200px;
     height: 200px;
@@ -332,7 +374,10 @@ div.desc {
     font-size: 0.8em;
 }
 
-/* 翻译按钮 */
+/* ============================================
+   翻译按钮
+   ============================================ */
+
 #translation-buttons {
     position: fixed;
     top: 10px;
@@ -340,14 +385,19 @@ div.desc {
     z-index: 1000;
 }
 
-/* Footer 样式 */
+/* ============================================
+   Footer 样式
+   ============================================ */
+
 #footer {
-    background-color: rgb(208, 208, 208);
+    background-color: rgb(85, 85, 85);
     font-size: small;
-    color: rgb(39, 39, 39);
+    color: rgb(184, 184, 184);
     clear: both;
     text-align: left;
     padding: 60px;
+    width: 100%; /* 确保全宽 */
+    box-sizing: border-box;
 }
 
 .about-link {
@@ -361,7 +411,11 @@ div.desc {
     color: rgb(220, 220, 220);
 }
 
-/* 响应式设计 */
+/* ============================================
+   响应式设计
+   ============================================ */
+
+/* 大屏幕 */
 @media screen and (max-width: 1200px) {
     .image-container {
         height: 500px;
@@ -369,10 +423,12 @@ div.desc {
     }
 
     .cities {
-        margin-left: 300px;
+        margin-left: 20px;
+        margin-right: 20px;
     }
 }
 
+/* 中等屏幕 */
 @media screen and (max-width: 900px) {
     .navbar {
         font-size: 1.5em;
@@ -380,10 +436,16 @@ div.desc {
     }
 
     main {
-        margin: 30px 180px;
+        margin: 30px 20px;
+        padding: 20px;
+    }
+
+    .column.side {
+        margin-left: 20px;
     }
 }
 
+/* 平板 */
 @media screen and (max-width: 768px) {
     .image-container {
         height: 400px;
@@ -395,13 +457,16 @@ div.desc {
         margin-left: 20px;
     }
 
+    /* 隐藏侧边栏（固定效果在小屏幕上不适用） */
     .column.side {
         display: none;
+        position: static;
     }
 
     .column.middle {
         width: 100%;
         padding: 10px;
+        max-width: 100%;
     }
 
     .column.right {
@@ -409,20 +474,26 @@ div.desc {
     }
 
     .cities {
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     main {
-        margin: 20px;
+        margin: 20px 10px;
         padding: 20px;
     }
 
     #footer {
         padding: 30px 20px;
     }
+
+    /* 调整标题区域的 padding */
+    table td {
+        padding-left: 20px !important;
+    }
 }
 
+/* 手机 */
 @media screen and (max-width: 480px) {
     .image-container {
         height: 300px;
@@ -447,5 +518,29 @@ div.desc {
         width: 150px;
         height: 150px;
         margin: 40px 10px 0;
+    }
+
+    main {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .cities {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    #footer {
+        padding: 20px 15px;
+    }
+
+    /* 进一步调整标题 */
+    table td {
+        padding-left: 10px !important;
+        padding-top: 20px !important;
+    }
+
+    table td h1 {
+        font-size: 1.5em;
     }
 }
